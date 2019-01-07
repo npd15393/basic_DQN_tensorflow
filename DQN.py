@@ -180,26 +180,8 @@ class DQNAgent:
 
 			current_state,rew,done,_=env.step(idx)
 			total_rwd=total_rwd+rew
-		self.ys=total_rwd
 		env.reset()
-		self.plotRew()
 		print("Total Test Reward: "+str(total_rwd))
-
-	# def plotRew(self):
-	# 	# Limit x and y lists to 20 items
-	# 	# xs = xs[-20:]
-	# 	# ys = ys[-20:]
-
-	# 	# Draw x and y lists
-	# 	self.ax.clear()
-	# 	self.ax.plot(self.xs, self.ys)
-
-	# 	# Format plot
-	# 	plt.xticks(rotation=90, ha='right')
-	# 	plt.subplots_adjust(bottom=0.30)
-	# 	plt.title('Steps taken')
-	# 	plt.ylabel('Total Reward')
-	# 	plt.show()
 
 	def train(self,env):
 		cnt=0
@@ -241,9 +223,9 @@ class DQNAgent:
 					# Log
 					if cnt%1000==0:
 						print("Episode: "+str(cnt)+ " Loss: "+str(avg_loss))
-
-					if cnt%500==0:
 						self.test()
+					# if cnt%500==0:
+						
 
 					self.updateTarget(self.targVars)
 					
